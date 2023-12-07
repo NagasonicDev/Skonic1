@@ -1,7 +1,5 @@
 package ca.nagasonic.skonic.elements.citizens.effects;
 
-import ca.nagasonic.skonic.elements.citizens.expressions.ExprLastCreatedCitizen;
-import ca.nagasonic.skonic.elements.util.CheckEntityType;
 import ch.njol.skript.Skript;
 import ch.njol.skript.bukkitutil.EntityUtils;
 import ch.njol.skript.doc.*;
@@ -13,9 +11,7 @@ import ch.njol.skript.util.Direction;
 import ch.njol.util.Kleenean;
 import net.citizensnpcs.api.CitizensAPI;
 import net.citizensnpcs.api.npc.NPC;
-import net.citizensnpcs.api.npc.NPCRegistry;
 import org.bukkit.Location;
-import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.event.Event;
 

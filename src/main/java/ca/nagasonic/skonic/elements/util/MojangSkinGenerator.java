@@ -3,14 +3,12 @@ package ca.nagasonic.skonic.elements.util;
 import com.google.common.io.CharStreams;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.google.gson.stream.JsonToken;
 import net.citizensnpcs.api.util.Messaging;
 
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.URI;
 import java.net.URL;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;

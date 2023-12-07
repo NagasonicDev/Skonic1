@@ -1,7 +1,6 @@
 package ca.nagasonic.skonic.elements.citizens.effects;
 
 import ch.njol.skript.Skript;
-import ch.njol.skript.classes.data.SkriptClasses;
 import ch.njol.skript.doc.*;
 import ch.njol.skript.lang.Effect;
 import ch.njol.skript.lang.Expression;
@@ -10,7 +9,6 @@ import ch.njol.util.Kleenean;
 import net.citizensnpcs.api.CitizensAPI;
 import net.citizensnpcs.api.npc.NPC;
 import org.bukkit.entity.Entity;
-import org.bukkit.entity.LivingEntity;
 import org.bukkit.event.Event;
 import org.eclipse.jdt.annotation.Nullable;
 
