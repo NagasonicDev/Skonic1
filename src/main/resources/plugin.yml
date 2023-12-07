@@ -1,0 +1,4 @@
+name: Skonic
+version: '${version}'
+main: ca.nagasonic.skonic.Skonic
+api-version: '1.18'
