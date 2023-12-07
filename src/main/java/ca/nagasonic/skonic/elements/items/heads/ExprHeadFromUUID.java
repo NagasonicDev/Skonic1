@@ -1,4 +1,4 @@
-package ca.nagasonic.skonic.elements.items.heads.expressions;
+package ca.nagasonic.skonic.elements.items.heads;
 
 import ca.nagasonic.skonic.elements.util.HeadUtils;
 import ch.njol.skript.Skript;

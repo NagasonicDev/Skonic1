@@ -17,7 +17,6 @@ import net.citizensnpcs.util.Messages;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Event;
 import org.eclipse.jdt.annotation.Nullable;
-import org.json.JSONObject;
 
 import java.util.concurrent.ExecutionException;
 import java.util.logging.Level;

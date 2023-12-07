@@ -70,7 +70,8 @@ public class EffSpawnCitizen extends Effect {
         }
         String citizenName = (this.name != null && this.name.getSingle(evt) != null) ? this.name.getSingle(evt) : "";
         Location location = this.location.getSingle(evt);
-        CitizensAPI.getNPCRegistry().createNPC(CitizenType, name.getSingle(evt), location);
+        NPC npc = CitizensAPI.getNPCRegistry().createNPC(CitizenType, name.getSingle(evt), location);
+        lastSpawnedNPC = npc;
     }
 
 

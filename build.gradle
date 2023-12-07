@@ -15,10 +15,25 @@ repositories {
         name = "sonatype"
         url = "https://oss.sonatype.org/content/groups/public/"
     }
+    maven {
+        url 'https://repo.skriptlang.org/releases'
+    }
+    maven {
+        name = 'citizens-repo'
+        url = 'https://maven.citizensnpcs.co/repo'
+    }
 }
 
 dependencies {
-compileOnly "org.spigotmc:spigot-api:1.18-R0.1-SNAPSHOT"
+    compileOnly "org.spigotmc:spigot-api:1.18-R0.1-SNAPSHOT"
+    //Skript
+    implementation 'com.github.SkriptLang:Skript:2.7.3'
+    //Nullable Anotation
+    implementation (group: 'org.eclipse.jdt', name: 'org.eclipse.jdt.annotation', version: '2.2.700')
+    //CitizensAPI
+    compileOnly('net.citizensnpcs:citizens-main:2.0.30-SNAPSHOT') {
+        exclude group: '*', module: '*'
+    }
 }
 
 def targetJavaVersion = 17
