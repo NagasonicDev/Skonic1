@@ -14,7 +14,7 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class MojangSkinGenerator {
+public class SkinUtils {
 
     public static JsonObject generateFromURL(final String url, boolean slim)
             throws InterruptedException, ExecutionException {
@@ -26,7 +26,7 @@ public class MojangSkinGenerator {
                 HttpURLConnection con = (HttpURLConnection) target.openConnection();
                 con.setRequestMethod("POST");
                 con.setDoOutput(true);
-                con.setRequestProperty("User-Agent", "Citizens/2.0");
+                con.setRequestProperty("User-Agent", "Skonic/1.0");
                 con.setRequestProperty("Cache-Control", "no-cache");
                 con.setRequestProperty("Accept", "application/json");
                 con.setRequestProperty("Content-Type", "application/json");
@@ -68,6 +68,7 @@ public class MojangSkinGenerator {
             }
         }).get();
     }
+
 
     private static final ExecutorService EXECUTOR = Executors.newSingleThreadExecutor();
 }

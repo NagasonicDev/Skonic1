@@ -82,7 +82,7 @@ public class HeadUtils {
         }
     }
 
-    private static ItemStack getPlayerSkullItem() {
+    public static ItemStack getPlayerSkullItem() {
         if (newerApi()) {
             return new ItemStack(Material.valueOf("PLAYER_HEAD"));
         } else {

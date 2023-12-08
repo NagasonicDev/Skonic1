@@ -1,6 +1,6 @@
 package ca.nagasonic.skonic.elements.citizens.effects;
 
-import ca.nagasonic.skonic.elements.util.MojangSkinGenerator;
+import ca.nagasonic.skonic.elements.util.SkinUtils;
 import ch.njol.skript.Skript;
 import ch.njol.skript.doc.*;
 import ch.njol.skript.lang.Effect;
@@ -38,7 +38,7 @@ public class EffChangeCitizenSkinURL extends Effect {
         SkinTrait trait = npc.getOrAddTrait(SkinTrait.class);
         JsonObject data = null;
         try {
-            data = MojangSkinGenerator.generateFromURL(url.getSingle(e), false);
+            data = SkinUtils.generateFromURL(url.getSingle(e), false);
         } catch (InterruptedException ex) {
             throw new RuntimeException(ex);
         } catch (ExecutionException ex) {
