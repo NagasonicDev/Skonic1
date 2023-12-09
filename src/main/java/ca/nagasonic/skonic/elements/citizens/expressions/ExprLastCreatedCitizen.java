@@ -9,7 +9,7 @@ import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
 import net.citizensnpcs.api.npc.NPC;
 import org.bukkit.event.Event;
-import org.eclipse.jdt.annotation.Nullable;
+import org.jetbrains.annotations.Nullable;
 
 public class ExprLastCreatedCitizen extends SimpleExpression<NPC> {
     static {

@@ -1,4 +1,4 @@
-package ca.nagasonic.skonic.elements.items.heads;
+package ca.nagasonic.skonic.elements.skins;
 
 import ch.njol.skript.Skript;
 import ch.njol.skript.lang.Expression;
@@ -6,24 +6,21 @@ import ch.njol.skript.lang.ExpressionType;
 import ch.njol.skript.lang.SkriptParser;
 import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
-import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.SkullMeta;
 import org.jetbrains.annotations.Nullable;
 
-public class ExprOwnerOfHead extends SimpleExpression<Player> {
+public class ExprSkinWith extends SimpleExpression<Skin> {
     static {
-        Skript.registerExpression(ExprOwnerOfHead.class, Player.class, ExpressionType.COMBINED,
-                "owner of %itemstack%");
+        Skript.registerExpression(ExprSkinWith.class, Skin.class, ExpressionType.COMBINED,
+                "skin with value %string% and signature %string%");
     }
 
-    private Expression<ItemStack> item;
+    private Expression<String> value;
+    private Expression<String> signature;
 
     @Override
-    protected @Nullable Player[] get(Event e) {
-        SkullMeta meta = (SkullMeta) item.getSingle(e).getItemMeta();
-        return new Player[]{meta.getOwningPlayer().getPlayer()};
+    protected @Nullable Skin[] get(Event e) {
+        return new Skin[]{new Skin(value.getSingle(e), signature.getSingle(e))};
     }
 
     @Override
@@ -32,8 +29,8 @@ public class ExprOwnerOfHead extends SimpleExpression<Player> {
     }
 
     @Override
-    public Class<? extends Player> getReturnType() {
-        return Player.class;
+    public Class<? extends Skin> getReturnType() {
+        return Skin.class;
     }
 
     @Override
@@ -43,7 +40,8 @@ public class ExprOwnerOfHead extends SimpleExpression<Player> {
 
     @Override
     public boolean init(Expression<?>[] exprs, int matchedPattern, Kleenean isDelayed, SkriptParser.ParseResult parseResult) {
-        item = (Expression<ItemStack>) exprs[0];
+        value = (Expression<String>) exprs[0];
+        signature = (Expression<String>) exprs[1];
         return true;
     }
 }

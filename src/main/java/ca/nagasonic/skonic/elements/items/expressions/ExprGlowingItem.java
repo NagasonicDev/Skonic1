@@ -11,8 +11,8 @@ import org.bukkit.enchantments.Enchantment;
 import org.bukkit.event.Event;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.eclipse.jdt.annotation.NonNull;
-import org.eclipse.jdt.annotation.Nullable;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 public class ExprGlowingItem extends SimpleExpression<ItemStack> {
     static {
@@ -34,16 +34,11 @@ public class ExprGlowingItem extends SimpleExpression<ItemStack> {
         ItemStack item = this.item.getSingle(event);
         if (item != null) {
             if (item.getData().getItemType() == Material.FISHING_ROD) {
-                ItemMeta meta = item.getItemMeta();
-                meta.addEnchant(Enchantment.LOYALTY, 1, false);
-                item.setItemMeta(meta);
-                return new ItemStack[]{item};
+                item.addUnsafeEnchantment(Enchantment.LOYALTY, 1);
             }else{
-                ItemMeta meta = item.getItemMeta();
-                meta.addEnchant(Enchantment.LUCK, 1, false);
-                item.setItemMeta(meta);
-                return new ItemStack[]{item};
+                item.addUnsafeEnchantment(Enchantment.LUCK, 1);
             }
+            return new ItemStack[]{item};
         }
         return null;
     }
@@ -54,13 +49,13 @@ public class ExprGlowingItem extends SimpleExpression<ItemStack> {
     }
 
     @Override
-    @NonNull
+    @NotNull
     public Class<? extends ItemStack> getReturnType() {
         return ItemStack.class;
     }
 
     @Override
-    @NonNull
+    @NotNull
     public String toString(@Nullable Event event, boolean debug) {
         return "glowing " + this.item;
     }

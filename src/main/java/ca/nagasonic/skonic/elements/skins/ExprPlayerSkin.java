@@ -1,6 +1,5 @@
-package ca.nagasonic.skonic.elements.items.heads;
+package ca.nagasonic.skonic.elements.skins;
 
-import ca.nagasonic.skonic.elements.util.HeadUtils;
 import ch.njol.skript.Skript;
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.ExpressionType;
@@ -9,22 +8,21 @@ import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
-import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.Nullable;
 
-public class ExprHeadFromPlayer extends SimpleExpression<ItemStack> {
+public class ExprPlayerSkin extends SimpleExpression<Skin> {
     static {
-        Skript.registerExpression(ExprHeadFromPlayer.class, ItemStack.class, ExpressionType.COMBINED,
-                "(head|skull) from %player%",
-                "%player%['s] (head|skull)");
+        Skript.registerExpression(ExprPlayerSkin.class, Skin.class, ExpressionType.COMBINED,
+                "skin of %player%",
+                "%player%['s] skin");
     }
 
     private Expression<Player> player;
 
     @Override
-    protected @Nullable ItemStack[] get(Event e) {
-
-        return new ItemStack[]{HeadUtils.headFromName(player.getSingle(e).getName())};
+    protected @Nullable Skin[] get(Event e) {
+        Skin skin = Skin.fromURL("https://sessionserver.mojang.com/session/minecraft/profile/" + player.getSingle(e).getUniqueId() + "?unsigned=false");
+        return new Skin[]{skin};
     }
 
     @Override
@@ -33,8 +31,8 @@ public class ExprHeadFromPlayer extends SimpleExpression<ItemStack> {
     }
 
     @Override
-    public Class<? extends ItemStack> getReturnType() {
-        return null;
+    public Class<? extends Skin> getReturnType() {
+        return Skin.class;
     }
 
     @Override

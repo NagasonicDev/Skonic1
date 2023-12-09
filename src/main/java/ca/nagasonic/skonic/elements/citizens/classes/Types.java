@@ -1,15 +1,17 @@
 package ca.nagasonic.skonic.elements.citizens.classes;
 
+import ca.nagasonic.skonic.elements.skins.Skin;
 import ch.njol.skript.classes.Changer;
 import ch.njol.skript.classes.ClassInfo;
 import ch.njol.skript.classes.Parser;
 import ch.njol.skript.lang.ParseContext;
 import ch.njol.skript.registrations.Classes;
+import ch.njol.skript.util.EnumUtils;
 import ch.njol.util.coll.CollectionUtils;
 import net.citizensnpcs.api.npc.NPC;
 import org.bukkit.entity.Entity;
-import org.eclipse.jdt.annotation.NonNull;
-import org.eclipse.jdt.annotation.Nullable;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.skriptlang.skript.lang.converter.Converters;
 
 @SuppressWarnings({"unused", "deprecation"})
@@ -29,13 +31,13 @@ public class Types {
                     }
 
                     @Override
-                    @NonNull
+                    @NotNull
                     public String toString(NPC npc, int flags) {
                         return "citizen with id " + npc.getId();
                     }
 
                     @Override
-                    @NonNull
+                    @NotNull
                     public String toVariableNameString(NPC npc) {
                         return "citizen:" + npc.getId();
                     }
@@ -58,6 +60,44 @@ public class Types {
                         }
                     }
                 }));
+        Classes.registerClass(new ClassInfo<>(Skin.class, "skin")
+                .user("skin?")
+                .name("Skin")
+                .description("Represents a skin.")
+                .examples("player's skin")
+                .since("1.0.1")
+                .parser(new Parser<Skin>() {
+                    @SuppressWarnings("NullableProblems")
+                    @Override
+                    public boolean canParse(ParseContext context) {
+                        return false;
+                    }
+                    @Override
+                    public String toString(Skin skin, int flags) {
+                        return "skin with value " + skin.value + " and signature " + skin.signature;
+                    }
+
+                    @Override
+                    public String toVariableNameString(Skin skin) {
+                        return "skin:" + skin.toString();
+                    }
+                })
+                .changer(new Changer<Skin>() {
+                    @SuppressWarnings("NullableProblems")
+                    @Override
+                    public @Nullable Class<?>[] acceptChange(ChangeMode mode) {
+                        if (mode == ChangeMode.DELETE) return CollectionUtils.array();
+                        return null;
+                    }
+
+                    @SuppressWarnings("NullableProblems")
+                    @Override
+                    public void change(Skin[] what, @Nullable Object[] delta, ChangeMode mode) {
+
+                    }
+                }));
+
+
         Converters.registerConverter(NPC.class, Entity.class, NPC::getEntity);
     }
 }

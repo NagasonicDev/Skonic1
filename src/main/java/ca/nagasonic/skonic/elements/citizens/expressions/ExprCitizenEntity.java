@@ -3,7 +3,7 @@ package ca.nagasonic.skonic.elements.citizens.expressions;
 import ch.njol.skript.expressions.base.SimplePropertyExpression;
 import net.citizensnpcs.api.npc.NPC;
 import org.bukkit.entity.Entity;
-import org.eclipse.jdt.annotation.Nullable;
+import org.jetbrains.annotations.Nullable;
 
 public class ExprCitizenEntity extends SimplePropertyExpression<NPC, Entity> {
     static {

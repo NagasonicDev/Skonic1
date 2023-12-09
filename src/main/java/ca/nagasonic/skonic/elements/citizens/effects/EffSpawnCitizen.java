@@ -14,6 +14,7 @@ import net.citizensnpcs.api.npc.NPC;
 import org.bukkit.Location;
 import org.bukkit.entity.EntityType;
 import org.bukkit.event.Event;
+import org.jetbrains.annotations.Nullable;
 
 @Name("Spawn Citizen")
 @Description({"Spawn a customisable citizen with:",
@@ -47,7 +48,7 @@ public class EffSpawnCitizen extends Effect {
     }
 
     @Override
-    public String toString(Event evt, boolean arg1) {
+    public String toString(@Nullable Event evt, boolean arg1) {
         if (type != null){
             return "Created NPC named: " + name.toString(evt, arg1) + " Location: "
                     + location.toString(evt, arg1) + " Type:" + type.toString();

@@ -9,8 +9,8 @@ import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
 import org.bukkit.event.Event;
 import org.bukkit.inventory.ItemStack;
-import org.eclipse.jdt.annotation.NonNull;
-import org.eclipse.jdt.annotation.Nullable;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 public class ExprHeadFromURL extends SimpleExpression<ItemStack> {
     static {
@@ -42,13 +42,13 @@ public class ExprHeadFromURL extends SimpleExpression<ItemStack> {
     }
 
     @Override
-    @NonNull
+    @NotNull
     public Class<? extends ItemStack> getReturnType() {
         return ItemStack.class;
     }
 
     @Override
-    @NonNull
+    @NotNull
     public String toString(@Nullable Event event, boolean debug) {
         return "head from url " + this.url;
     }

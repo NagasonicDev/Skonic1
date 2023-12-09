@@ -9,7 +9,7 @@ import ch.njol.util.Kleenean;
 import net.citizensnpcs.api.CitizensAPI;
 import net.citizensnpcs.api.npc.NPC;
 import org.bukkit.event.Event;
-import org.eclipse.jdt.annotation.Nullable;
+import org.jetbrains.annotations.Nullable;
 
 @Name("Delete Citizen")
 @Description("Destroy a citizen by id.")

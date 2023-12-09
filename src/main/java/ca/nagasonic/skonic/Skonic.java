@@ -42,4 +42,8 @@ public final class Skonic extends JavaPlugin {
     public void onDisable() {
         // Plugin shutdown logic
     }
+
+    public static Skonic getPlugin(){
+        return instance;
+    }
 }

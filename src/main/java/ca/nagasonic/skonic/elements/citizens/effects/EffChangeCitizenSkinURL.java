@@ -13,7 +13,7 @@ import net.citizensnpcs.api.npc.NPC;
 import net.citizensnpcs.trait.SkinTrait;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Event;
-import org.eclipse.jdt.annotation.Nullable;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.concurrent.ExecutionException;
 import java.util.logging.Level;
