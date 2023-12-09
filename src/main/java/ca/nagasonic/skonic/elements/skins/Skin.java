@@ -1,10 +1,7 @@
 package ca.nagasonic.skonic.elements.skins;
 
-import ch.njol.skript.Skript;
-import ch.njol.skript.log.ErrorQuality;
 import com.comphenix.protocol.wrappers.WrappedGameProfile;
 import com.comphenix.protocol.wrappers.WrappedSignedProperty;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 

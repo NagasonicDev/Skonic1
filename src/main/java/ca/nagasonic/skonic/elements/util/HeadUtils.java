@@ -1,17 +1,13 @@
 package ca.nagasonic.skonic.elements.util;
 
-import ca.nagasonic.skonic.elements.skins.Skin;
-import com.comphenix.protocol.wrappers.WrappedGameProfile;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.SkullMeta;
-import org.jetbrains.annotations.Nullable;
 
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Base64;
-import java.util.Optional;
 import java.util.UUID;
 
 public class HeadUtils {
