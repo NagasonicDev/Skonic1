@@ -1,5 +1,6 @@
 package ca.nagasonic.skonic.elements.citizens.effects;
 
+import ca.nagasonic.skonic.Skonic;
 import ch.njol.skript.Skript;
 import ch.njol.skript.doc.*;
 import ch.njol.skript.lang.Effect;
@@ -41,9 +42,9 @@ public class EffChangeCitizenSkinName extends Effect {
                 //Check if the name is null
                 if (name.getSingle(e) != null){
                     trait.setSkinName(name.getSingle(e));
-                }else Bukkit.getLogger().log(Level.SEVERE, "Specified Name is null");
-            }else Bukkit.getLogger().log(Level.SEVERE, "There is no citizen with ID " + id.getSingle(e).toString());
-        }else Bukkit.getLogger().log(Level.SEVERE, "Specified ID is null");
+                }else Skonic.log(Level.SEVERE, "The specified name is null.");
+            }else Skonic.log(Level.SEVERE, "There is no citizen with ID " + id.getSingle(e).toString());
+        }else Skonic.log(Level.SEVERE, "Specified ID is null");
     }
 
     @Override

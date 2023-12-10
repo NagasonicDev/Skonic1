@@ -1,5 +1,6 @@
 package ca.nagasonic.skonic.elements.citizens.effects;
 
+import ca.nagasonic.skonic.Skonic;
 import ch.njol.skript.Skript;
 import ch.njol.skript.bukkitutil.EntityUtils;
 import ch.njol.skript.doc.*;
@@ -15,6 +16,8 @@ import org.bukkit.Location;
 import org.bukkit.entity.EntityType;
 import org.bukkit.event.Event;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.logging.Level;
 
 @Name("Spawn Citizen")
 @Description({"Spawn a customisable citizen with:",
@@ -60,6 +63,7 @@ public class EffSpawnCitizen extends Effect {
 
     @Override
     public void execute(Event evt) {
+        if (location == null || location.getSingle(evt) == null) Skonic.log(Level.SEVERE, "The specified location is null");
         EntityType CitizenType = EntityType.PLAYER;
         if (type != null){
             EntityData<?> data = type.getSingle(evt);

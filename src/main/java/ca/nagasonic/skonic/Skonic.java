@@ -5,6 +5,7 @@ import ch.njol.skript.SkriptAddon;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.IOException;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public final class Skonic extends JavaPlugin {
@@ -46,5 +47,9 @@ public final class Skonic extends JavaPlugin {
 
     public static Skonic getPlugin(){
         return instance;
+    }
+
+    public static void log(Level level, String message){
+        logger.log(level, message);
     }
 }

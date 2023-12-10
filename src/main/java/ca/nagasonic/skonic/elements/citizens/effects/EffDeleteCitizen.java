@@ -1,5 +1,6 @@
 package ca.nagasonic.skonic.elements.citizens.effects;
 
+import ca.nagasonic.skonic.Skonic;
 import ch.njol.skript.Skript;
 import ch.njol.skript.doc.*;
 import ch.njol.skript.lang.Effect;
@@ -33,9 +34,9 @@ public class EffDeleteCitizen extends Effect {
             if (npc != null){
                 if (npc.getOwningRegistry() != null){
                     npc.destroy();
-                }else Bukkit.getLogger().log(Level.SEVERE, "The citizen has no Owning Registry");
-            }else Bukkit.getLogger().log(Level.SEVERE, "There is no citizen with id " + id.getSingle(e));
-        }else Bukkit.getLogger().log(Level.SEVERE, "Specified ID is null");
+                }else Skonic.log(Level.SEVERE, "The citizen has no Owning Registry");
+            }else Skonic.log(Level.SEVERE, "There is no citizen with id " + id.getSingle(e));
+        }else Skonic.log(Level.SEVERE, "Specified ID is null");
     }
 
     @Override

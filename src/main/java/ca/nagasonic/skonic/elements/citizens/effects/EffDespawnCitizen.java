@@ -1,5 +1,6 @@
 package ca.nagasonic.skonic.elements.citizens.effects;
 
+import ca.nagasonic.skonic.Skonic;
 import ch.njol.skript.Skript;
 import ch.njol.skript.lang.Effect;
 import ch.njol.skript.lang.Expression;
@@ -40,8 +41,8 @@ public class EffDespawnCitizen extends Effect {
                         npcs.spawn(location, SpawnReason.PLUGIN);
                     }
                 }
-            }else Bukkit.getLogger().log(Level.SEVERE, "Specified location is null");
-        }else Bukkit.getLogger().log(Level.SEVERE, "Specified citizen is null");
+            }else Skonic.log(Level.SEVERE, "Specified location is null");
+        }else Skonic.log(Level.SEVERE, "Specified citizen is null");
     }
 
     @Override

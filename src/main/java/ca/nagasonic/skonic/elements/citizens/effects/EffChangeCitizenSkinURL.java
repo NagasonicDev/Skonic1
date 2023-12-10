@@ -49,8 +49,8 @@ public class EffChangeCitizenSkinURL extends Effect {
                         URL Url = new URL(url.getSingle(e));
                         //Check if the url is a API valid url
                         String urlString = Url.toString();
-                        if (!urlString.contains("https://minecraftskins.net") || urlString.contains("http://textures.minecraft.net")){
-                            Skript.error("Specified URL is not a valid URL. Please use a url from \"https://minecraftskins.net\" or \"http://textures.minecraft.net\"", ErrorQuality.SEMANTIC_ERROR);
+                        if (!urlString.contains("https://minecraftskins.com") || urlString.contains("http://textures.minecraft.net")){
+                            Skript.error("Specified URL is not a valid URL. Please use a url from \"https://minecraftskins.com\" or \"http://textures.minecraft.net\"", ErrorQuality.SEMANTIC_ERROR);
                         }
                     } catch (MalformedURLException ex) {
                         Skript.error("Specified 'URL' is not a valid URL");
