@@ -18,7 +18,9 @@ public class ExprCitizenID extends SimpleExpression<Number> {
 
     @Override
     protected @Nullable Number[] get(Event e) {
-        return new Number[]{npc.getSingle(e).getId()};
+        if (npc != null && npc.getSingle(e) != null){
+            return new Number[]{npc.getSingle(e).getId()};
+        }else return null;
     }
 
     @Override
@@ -33,7 +35,7 @@ public class ExprCitizenID extends SimpleExpression<Number> {
 
     @Override
     public String toString(@Nullable Event e, boolean debug) {
-        return null;
+        return "id of " + npc.getSingle(e).toString();
     }
 
     @Override

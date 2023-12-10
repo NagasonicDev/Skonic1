@@ -8,8 +8,11 @@ import ch.njol.skript.lang.SkriptParser;
 import ch.njol.util.Kleenean;
 import net.citizensnpcs.api.CitizensAPI;
 import net.citizensnpcs.api.npc.NPC;
+import org.bukkit.Bukkit;
 import org.bukkit.event.Event;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.logging.Level;
 
 @Name("Delete Citizen")
 @Description("Destroy a citizen by id.")
@@ -25,17 +28,19 @@ public class EffDeleteCitizen extends Effect {
 
     @Override
     protected void execute(Event e) {
-        if (id != null && CitizensAPI.getNPCRegistry().getById(id.getSingle(e).intValue()) != null){
+        if (id != null){
             NPC npc = CitizensAPI.getNPCRegistry().getById(id.getSingle(e).intValue());
-            if (npc != null && npc.getOwningRegistry() != null){
-                npc.destroy();
-            }
-        }
+            if (npc != null){
+                if (npc.getOwningRegistry() != null){
+                    npc.destroy();
+                }else Bukkit.getLogger().log(Level.SEVERE, "The citizen has no Owning Registry");
+            }else Bukkit.getLogger().log(Level.SEVERE, "There is no citizen with id " + id.getSingle(e));
+        }else Bukkit.getLogger().log(Level.SEVERE, "Specified ID is null");
     }
 
     @Override
     public String toString(@Nullable Event e, boolean debug) {
-        return null;
+        return "delete citizen with id " + id.getSingle(e);
     }
 
     @Override

@@ -31,7 +31,11 @@ public class ExprHeadFromValue extends SimpleExpression<ItemStack> {
     protected @Nullable ItemStack[] get(Event event) {
         String ValueString = this.value.getSingle(event);
         if (ValueString != null) {
-            return new ItemStack[]{HeadUtils.headFromBase64(ValueString)};
+            ItemStack item = HeadUtils.headFromBase64(ValueString);
+            if (item != null){
+                return new ItemStack[]{item};
+            }
+            return null;
         }
         return null;
     }
@@ -50,6 +54,6 @@ public class ExprHeadFromValue extends SimpleExpression<ItemStack> {
     @Override
     @NotNull
     public String toString(@Nullable Event event, boolean debug) {
-        return "head from value " + this.value;
+        return "head from value " + value.getSingle(event);
     }
 }

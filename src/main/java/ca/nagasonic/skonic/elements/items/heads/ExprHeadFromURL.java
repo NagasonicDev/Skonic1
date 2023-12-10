@@ -31,7 +31,11 @@ public class ExprHeadFromURL extends SimpleExpression<ItemStack> {
     protected @Nullable ItemStack[] get(Event event) {
         String url = this.url.getSingle(event);
         if (url != null) {
-            return new ItemStack[]{HeadUtils.headFromUrl(url)};
+            ItemStack item = HeadUtils.headFromUrl(url);
+            if (item != null){
+                return new ItemStack[]{item};
+            }
+            return null;
         }
         return null;
     }
@@ -50,6 +54,6 @@ public class ExprHeadFromURL extends SimpleExpression<ItemStack> {
     @Override
     @NotNull
     public String toString(@Nullable Event event, boolean debug) {
-        return "head from url " + this.url;
+        return "head from url " + url.getSingle(event);
     }
 }

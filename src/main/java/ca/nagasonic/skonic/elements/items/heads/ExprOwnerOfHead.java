@@ -22,8 +22,18 @@ public class ExprOwnerOfHead extends SimpleExpression<Player> {
 
     @Override
     protected @Nullable Player[] get(Event e) {
-        SkullMeta meta = (SkullMeta) item.getSingle(e).getItemMeta();
-        return new Player[]{meta.getOwningPlayer().getPlayer()};
+        if (item != null && item.getSingle(e) != null){
+            SkullMeta meta = (SkullMeta) item.getSingle(e).getItemMeta();
+            if (meta != null){
+                Player player = meta.getOwningPlayer().getPlayer();
+                if (player != null){
+                    return new Player[]{player};
+                }
+                return null;
+            }
+            return null;
+        }
+        return null;
     }
 
     @Override
@@ -38,7 +48,7 @@ public class ExprOwnerOfHead extends SimpleExpression<Player> {
 
     @Override
     public String toString(@Nullable Event e, boolean debug) {
-        return null;
+        return "owner of " + item.getSingle(e).toString();
     }
 
     @Override

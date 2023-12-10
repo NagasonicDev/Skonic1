@@ -26,7 +26,9 @@ public class ExprLastCreatedCitizen extends SimpleExpression<NPC> {
     @SuppressWarnings("NullableProblems")
     @Override
     protected @Nullable NPC[] get(Event event) {
-        return new NPC[]{EffSpawnCitizen.lastSpawnedNPC};
+        if (EffSpawnCitizen.lastSpawnedNPC != null){
+            return new NPC[]{EffSpawnCitizen.lastSpawnedNPC};
+        }else return null;
     }
 
     @Override

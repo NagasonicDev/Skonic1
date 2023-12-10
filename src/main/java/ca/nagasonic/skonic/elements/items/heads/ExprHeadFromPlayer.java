@@ -23,8 +23,13 @@ public class ExprHeadFromPlayer extends SimpleExpression<ItemStack> {
 
     @Override
     protected @Nullable ItemStack[] get(Event e) {
-
-        return new ItemStack[]{HeadUtils.headFromName(player.getSingle(e).getName())};
+        if (player.getSingle(e) != null && player != null){
+            ItemStack item = HeadUtils.headFromName(player.getSingle(e).getName());
+            if (item != null){
+                return new ItemStack[]{item};
+            }
+            return null;
+        }else return null;
     }
 
     @Override
@@ -39,7 +44,7 @@ public class ExprHeadFromPlayer extends SimpleExpression<ItemStack> {
 
     @Override
     public String toString(@Nullable Event e, boolean debug) {
-        return null;
+        return "head of " + player.getSingle(e).toString();
     }
 
     @Override

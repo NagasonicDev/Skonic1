@@ -29,6 +29,7 @@ public class ExprPlayerSkinValue extends SimpleExpression<String> {
 
     @Override
     protected @Nullable String[] get(Event e) {
+        if (player == null || player.getSingle(e) == null || player.getSingle(e).getUniqueId() == null) return null;
         try {
             URL url = new URL("https://sessionserver.mojang.com/session/minecraft/profile/" + player.getSingle(e).getUniqueId());
             BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
@@ -53,7 +54,7 @@ public class ExprPlayerSkinValue extends SimpleExpression<String> {
 
     @Override
     public String toString(@Nullable Event e, boolean debug) {
-        return null;
+        return "skin value of " + player.getSingle(e).toString();
     }
 
     @Override

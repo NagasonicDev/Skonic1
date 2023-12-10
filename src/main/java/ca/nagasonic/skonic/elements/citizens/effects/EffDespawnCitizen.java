@@ -9,9 +9,12 @@ import ch.njol.util.Kleenean;
 import net.citizensnpcs.api.event.DespawnReason;
 import net.citizensnpcs.api.event.SpawnReason;
 import net.citizensnpcs.api.npc.NPC;
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.event.Event;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.logging.Level;
 
 public class EffDespawnCitizen extends Effect {
     static {
@@ -25,19 +28,25 @@ public class EffDespawnCitizen extends Effect {
 
     @Override
     protected void execute(Event e) {
-        Location location = loc != null ? loc.getSingle(e) : null;
-        for (NPC npcs : npc.getArray(e)) {
-            if (this.pattern == 0) {
-                npcs.despawn(DespawnReason.PLUGIN);
-            } else if (location != null) {
-                npcs.spawn(location, SpawnReason.PLUGIN);
-            }
-        }
+        //Check if citizen is null
+        if (npc.getSingle(e) != null){
+            //Check if location is null
+            if (loc.getSingle(e) != null && loc != null){
+                Location location = loc.getSingle(e);
+                for (NPC npcs : npc.getArray(e)) {
+                    if (this.pattern == 0) {
+                        npcs.despawn(DespawnReason.PLUGIN);
+                    } else {
+                        npcs.spawn(location, SpawnReason.PLUGIN);
+                    }
+                }
+            }else Bukkit.getLogger().log(Level.SEVERE, "Specified location is null");
+        }else Bukkit.getLogger().log(Level.SEVERE, "Specified citizen is null");
     }
 
     @Override
     public String toString(@Nullable Event e, boolean debug) {
-        return null;
+        return "despawn " + npc.getSingle(e).toString();
     }
 
     @Override

@@ -1,16 +1,21 @@
 package ca.nagasonic.skonic.elements.citizens.effects;
 
+import ca.nagasonic.skonic.elements.util.Util;
 import ch.njol.skript.Skript;
 import ch.njol.skript.doc.*;
 import ch.njol.skript.lang.Effect;
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser;
+import ch.njol.skript.log.ErrorQuality;
 import ch.njol.util.Kleenean;
 import net.citizensnpcs.api.CitizensAPI;
 import net.citizensnpcs.api.npc.NPC;
 import net.citizensnpcs.trait.SkinTrait;
+import org.bukkit.Bukkit;
 import org.bukkit.event.Event;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.logging.Level;
 
 @Name("Set Citizen Skin - Name")
 @Description("Set a citizen's skin by name." +
@@ -28,15 +33,24 @@ public class EffChangeCitizenSkinName extends Effect {
 
     @Override
     protected void execute(Event e) {
-        NPC npc = CitizensAPI.getNPCRegistry().getById(id.getSingle(e).intValue());
-        SkinTrait trait = npc.getOrAddTrait(SkinTrait.class);
-        trait.setShouldUpdateSkins(true);
-        trait.setSkinName(name.getSingle(e));
+        //Check if the ID is null
+        if (id.getSingle(e) != null) {
+            NPC npc = CitizensAPI.getNPCRegistry().getById(id.getSingle(e).intValue());
+            //Check if there is a citizen with the ID
+            if (npc != null){
+                SkinTrait trait = npc.getOrAddTrait(SkinTrait.class);
+                trait.setShouldUpdateSkins(true);
+                //Check if the name is null
+                if (name.getSingle(e) != null){
+                    trait.setSkinName(name.getSingle(e));
+                }else Bukkit.getLogger().log(Level.SEVERE, "Specified Name is null");
+            }else Bukkit.getLogger().log(Level.SEVERE, "There is no citizen with ID " + id.getSingle(e).toString());
+        }else Bukkit.getLogger().log(Level.SEVERE, "Specified ID is null");
     }
 
     @Override
     public String toString(@Nullable Event e, boolean debug) {
-        return null;
+        return "change skin of citizen with id " + id.getSingle(e) + " to name " + name.getSingle(e);
     }
 
     @Override

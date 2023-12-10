@@ -7,6 +7,7 @@ import ch.njol.skript.lang.ExpressionType;
 import ch.njol.skript.lang.SkriptParser;
 import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
+import org.bukkit.entity.Wither;
 import org.bukkit.event.Event;
 import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
@@ -33,7 +34,11 @@ public class ExprHeadFromUUID extends SimpleExpression<ItemStack> {
     protected @Nullable ItemStack[] get(Event event) {
         UUID uuid = UUID.fromString(this.uuid.getSingle(event));
         if (uuid != null) {
-            return new ItemStack[]{HeadUtils.headFromUuid(uuid)};
+            ItemStack item = HeadUtils.headFromUuid(uuid);
+            if (item != null){
+                return new ItemStack[]{item};
+            }
+            return null;
         }
         return null;
     }
@@ -52,6 +57,6 @@ public class ExprHeadFromUUID extends SimpleExpression<ItemStack> {
     @Override
     @NotNull
     public String toString(@Nullable Event event, boolean debug) {
-        return "head from uuid " + this.uuid;
+        return "head from uuid " + uuid.getSingle(event);
     }
 }

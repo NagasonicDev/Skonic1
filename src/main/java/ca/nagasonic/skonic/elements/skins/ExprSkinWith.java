@@ -20,6 +20,7 @@ public class ExprSkinWith extends SimpleExpression<Skin> {
 
     @Override
     protected @Nullable Skin[] get(Event e) {
+        if (value == null || value.getSingle(e) == null || signature == null || signature.getSingle(e) == null) return null;
         return new Skin[]{new Skin(value.getSingle(e), signature.getSingle(e))};
     }
 
@@ -35,7 +36,7 @@ public class ExprSkinWith extends SimpleExpression<Skin> {
 
     @Override
     public String toString(@Nullable Event e, boolean debug) {
-        return null;
+        return "skin with value " + value.getSingle(e) + "and signature " + signature.getSingle(e);
     }
 
     @Override

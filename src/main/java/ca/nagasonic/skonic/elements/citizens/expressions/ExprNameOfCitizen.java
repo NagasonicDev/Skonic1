@@ -20,8 +20,12 @@ public class ExprNameOfCitizen extends SimpleExpression<String> {
 
     @Override
     protected @Nullable String[] get(Event e) {
-        NPC npc = CitizensAPI.getNPCRegistry().getById(id.getSingle(e).intValue());
-        return new String[]{npc.getName()};
+        if (id != null && id.getSingle(e) != null){
+            NPC npc = CitizensAPI.getNPCRegistry().getById(id.getSingle(e).intValue());
+            if (npc != null){
+                return new String[]{npc.getName()};
+            }else return null;
+        }else return null;
     }
 
     @Override
@@ -36,7 +40,7 @@ public class ExprNameOfCitizen extends SimpleExpression<String> {
 
     @Override
     public String toString(@Nullable Event e, boolean debug) {
-        return null;
+        return "name of citizen with id " + id.getSingle(e).toString();
     }
 
     @Override

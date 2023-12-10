@@ -18,7 +18,11 @@ public class ExprCitizenEntity extends SimplePropertyExpression<NPC, Entity> {
 
     @Override
     public @Nullable Entity convert(NPC npc) {
-        return npc.getEntity();
+        if (npc != null){
+            return npc.getEntity();
+        }else{
+            return null;
+        }
     }
 
     @Override

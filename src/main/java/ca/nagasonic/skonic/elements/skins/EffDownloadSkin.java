@@ -44,7 +44,7 @@ public class EffDownloadSkin extends Effect {
 
     @Override
     public String toString(@Nullable Event e, boolean debug) {
-        return null;
+        return "download skin from " + player.getSingle(e).toString();
     }
 
     @Override

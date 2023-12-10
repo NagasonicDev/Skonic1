@@ -50,6 +50,6 @@ public class ExprHeadFromName extends SimpleExpression<ItemStack> {
     @Override
     @NotNull
     public String toString(@Nullable Event event, boolean debug) {
-        return "head from name " + this.name;
+        return "head from name " + name.getSingle(event).toString();
     }
 }

@@ -21,8 +21,17 @@ public class ExprPlayerSkin extends SimpleExpression<Skin> {
 
     @Override
     protected @Nullable Skin[] get(Event e) {
-        Skin skin = Skin.fromURL("https://sessionserver.mojang.com/session/minecraft/profile/" + player.getSingle(e).getUniqueId() + "?unsigned=false");
-        return new Skin[]{skin};
+        if (player != null && player.getSingle(e) != null){
+            if (player.getSingle(e).getUniqueId() != null){
+                Skin skin = Skin.fromURL("https://sessionserver.mojang.com/session/minecraft/profile/" + player.getSingle(e).getUniqueId() + "?unsigned=false");
+                if (skin != null){
+                    return new Skin[]{skin};
+                }
+                return null;
+            }
+            return null;
+        }
+        return null;
     }
 
     @Override
@@ -37,7 +46,7 @@ public class ExprPlayerSkin extends SimpleExpression<Skin> {
 
     @Override
     public String toString(@Nullable Event e, boolean debug) {
-        return null;
+        return "skin of " + player.getSingle(e).toString();
     }
 
     @Override
