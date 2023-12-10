@@ -10,7 +10,9 @@ import org.bukkit.command.CommandSender;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 import java.util.regex.Matcher;
@@ -132,5 +134,15 @@ public class Util {
         long most = uuid.getMostSignificantBits();
         long least = uuid.getLeastSignificantBits();
         return new int[]{(int) (most >> 32), (int) most, (int) (least >> 32), (int) least};
+    }
+
+    public static Date getDate(){
+        Date date = new Date();
+        return date;
+    }
+
+    public static String fromDate(Date date){
+        SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy_HH-mm-ss");
+        return format.format(date);
     }
 }

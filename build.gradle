@@ -3,7 +3,7 @@ plugins {
 }
 
 group = 'ca.nagasonic'
-version = '1.0.1'
+version = '1.0.2'
 
 repositories {
     mavenCentral()
@@ -37,6 +37,10 @@ dependencies {
     implementation 'org.jetbrains:annotations:24.0.0'
     //ProtocolLib
     compileOnly group: "com.comphenix.protocol", name: "ProtocolLib", version: "4.8.0";
+    //bStats
+    implementation(group: 'org.bstats', name: 'bstats-bukkit', version: '3.0.2')
+    //Apache Commons IO
+    implementation group: 'commons-io', name: 'commons-io', version: '2.15.1'
 }
 
 def targetJavaVersion = 17

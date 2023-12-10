@@ -2,6 +2,7 @@ package ca.nagasonic.skonic;
 
 import ch.njol.skript.Skript;
 import ch.njol.skript.SkriptAddon;
+import org.bstats.bukkit.Metrics;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.IOException;
@@ -36,6 +37,7 @@ public final class Skonic extends JavaPlugin {
             e.printStackTrace();
         }
         Skonic.info("Skonic has been enabled");
+        instance.getDataFolder().mkdir();
     }
 
     @Override
