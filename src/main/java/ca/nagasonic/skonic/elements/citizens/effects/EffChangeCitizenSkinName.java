@@ -1,12 +1,10 @@
 package ca.nagasonic.skonic.elements.citizens.effects;
 
-import ca.nagasonic.skonic.elements.util.Util;
 import ch.njol.skript.Skript;
 import ch.njol.skript.doc.*;
 import ch.njol.skript.lang.Effect;
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser;
-import ch.njol.skript.log.ErrorQuality;
 import ch.njol.util.Kleenean;
 import net.citizensnpcs.api.CitizensAPI;
 import net.citizensnpcs.api.npc.NPC;

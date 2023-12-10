@@ -1,6 +1,5 @@
 package ca.nagasonic.skonic.elements.citizens.effects;
 
-import ca.nagasonic.skonic.elements.skins.Skin;
 import ca.nagasonic.skonic.elements.util.SkinUtils;
 import ch.njol.skript.Skript;
 import ch.njol.skript.doc.*;

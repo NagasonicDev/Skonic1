@@ -1,14 +1,12 @@
 package ca.nagasonic.skonic.elements.skins;
 
 import ca.nagasonic.skonic.Skonic;
-import ca.nagasonic.skonic.elements.util.Util;
 import ch.njol.skript.Skript;
 import ch.njol.skript.lang.Effect;
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser;
 import ch.njol.util.Kleenean;
 import org.apache.commons.io.FileUtils;
-import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 import org.bukkit.profile.PlayerProfile;
